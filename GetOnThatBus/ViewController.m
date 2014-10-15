@@ -36,9 +36,16 @@
         NSError *jsonError;
         NSDictionary *dictionaryOfBusStops = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
         self.groupOfBusStops = [dictionaryOfBusStops objectForKey:@"row"];
-        NSLog(@"%@", self.groupOfBusStops);
+        NSLog(@"%@", [self.groupOfBusStops.firstObject objectForKey:@"latitude"]);
     }];
 }
+
+
+
+
+
+
+
 
 
 
