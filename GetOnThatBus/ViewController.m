@@ -7,8 +7,12 @@
 //
 
 #import "ViewController.h"
+#import <MapKit/MapKit.h>
 
-@interface ViewController ()
+@interface ViewController () <MKMapViewDelegate>
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property MKPointAnnotation *busAnnotation;
+
 
 @end
 
@@ -16,12 +20,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+
+    CLLocationCoordinate2D coord;
+    coord.latitude = 41.89373984;
+    coord.longitude = -87.63532979;
+
+    self.busAnnotation = [[MKPointAnnotation alloc] init];
+    self.busAnnotation.coordinate = coord;
+    self.busAnnotation.title = @"bus one";
+    [self.mapView addAnnotation:self.busAnnotation];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 @end
